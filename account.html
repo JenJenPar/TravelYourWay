@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="account-content">
+        <h1>Welcome, <span id="username"></span></h1>
+        <p>Date Joined: <span id="dateJoined"></span></p>
+        <!-- Add more user info here as needed -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                document.getElementById('username').textContent = currentUser.username;
+                document.getElementById('dateJoined').textContent = currentUser.dateJoined;
+            } else {
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
+
+

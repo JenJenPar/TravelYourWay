@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Your Way</title>
+    <link href="/html/body/div[1]/div[1]/div/div[1]/img" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* Additional styles can be placed here */
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Travel Your Way</h1>
+            <div class="auth-buttons">
+                <a href="#" id="loginLink">Login</a>
+                <a href="#" id="signupLink">Sign Up</a>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <h2>Plan The Way You Want To Travel</h2>
+            <p>Welcome to my homepage!</p>
+
+            <div class="button-container">
+                <button id="createTripBtn">Create Your Trip</button>
+                <button id="exploreTripsBtn">Explore Popular Trips</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" name="loginEmail" required>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSignup">&times;</span>
+            <h2>Sign Up</h2>
+            <form action="signup.html">
+                <label for="signupFirstName">First Name:</label>
+                <input type="text" id="signupFirstName" name="signupFirstName" required>
+                <label for="signupLastName">Last Name:</label>
+                <input type="text" id="signupLastName" name="signupLastName" required>
+                <label for="signupEmail">Email:</label>
+                <input type="email" id="signupEmail" name="signupEmail" required>
+                <label for="signupPassword">Password:</label>
+                <input type="password" id="signupPassword" name="signupPassword" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Trip Form Modal -->
+    <div id="createTripModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateTrip">&times;</span>
+            <div class="create-trip-form">
+                <h2>Create Your Trip</h2>
+                <form action="map.html">
+                    <label for="startingPoint">Where are you starting?</label>
+                    <input type="text" id="startingPoint" name="startingPoint" required><br><br>
+                    <label for="destination">Where is your destination?</label>
+                    <input type="text" id="destination" name="destination" required><br><br>
+                    <button type="submit">Done</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code to control modals
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the modal elements
+            var loginModal = document.getElementById('loginModal');
+            var signupModal = document.getElementById('signupModal');
+            var createTripModal = document.getElementById('createTripModal');
+
+            // Get the buttons that open the modals
+            var loginLink = document.getElementById('loginLink');
+            var signupLink = document.getElementById('signupLink');
+            var createTripBtn = document.getElementById('createTripBtn');
+
+            // Get the close buttons for the modals
+            var closeLogin = document.getElementById('closeLogin');
+            var closeSignup = document.getElementById('closeSignup');
+            var closeCreateTrip = document.getElementById('closeCreateTrip');
+
+            // Function to open modals
+            function openModal(modal) {
+                modal.style.display = 'block';
+            }
+
+            // Function to close modals
+            function closeModal(modal) {
+                modal.style.display = 'none';
+            }
+
+            // Event listeners to open modals
+            loginLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                openModal(loginModal);
+            });
+
+            signupLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                openModal(signupModal);
+            });
+
+            createTripBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                openModal(createTripModal);
+            });
+
+            // Event listeners to close modals
+            closeLogin.addEventListener('click', function() {
+                closeModal(loginModal);
+            });
+
+            closeSignup.addEventListener('click', function() {
+                closeModal(signupModal);
+            });
+
+            closeCreateTrip.addEventListener('click', function() {
+                closeModal(createTripModal);
+            });
+
+            // Close modal if user clicks outside of it
+            window.addEventListener('click', function(event) {
+                if (event.target === loginModal) {
+                    closeModal(loginModal);
+                } else if (event.target === signupModal) {
+                    closeModal(signupModal);
+                } else if (event.target === createTripModal) {
+                    closeModal(createTripModal);
+                }
+            });
+
+            // Close modal if user presses Escape key
+            window.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeModal(loginModal);
+                    closeModal(signupModal);
+                    closeModal(createTripModal);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
